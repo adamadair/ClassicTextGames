@@ -2,6 +2,7 @@ def intro():
     print(tab(34) + "LEM")
     print(tab(15) + "CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY")
 
+
 def tab(t):
     return " " * t
 
@@ -55,53 +56,52 @@ class Rockt2:
                 print("JUST ANSWER THE QUESTION, PLEASE, ")
         return resp
 
-    def instructions(self):
+    def instructions(self, q):
         """
         print instructions. lines 315-480
         """
-        print("\n  YOU ARE ON A LUNAR LANDING MISSION.  AS THE PILOT OF")
-        print("THE LUNAR EXCURSION MODULE, YOU WILL BE EXPECTED TO")
-        print("GIVE CERTAIN COMMANDS TO THE MODULE NAVIGATION SYSTEM.")
-        print("THE ON-BOARD COMPUTER WILL GIVE A RUNNING ACCOUNT")
-        print("OF INFORMATION NEEDED TO NAVIGATE THE SHIP.\n\n")  #line 8
-        print("THE ATTITUDE ANGLE CALLED FOR IS DESCRIBED AS FOLLOWS.")
-        print("+ OR -180 DEGREES IS DIRECTLY AWAY FROM THE MOON")
-        print("-90 DEGREES IS ON A TANGENT IN THE DIRECTION OF ORBIT")
-        print("+90 DEGREES IS ON A TANGENT FROM THE DIRECTION OF ORBIT")
-        print("0 (ZERO) DEGREES IS DIRECTLY TOWARD THE MOON\n")  # line 16
-        print(tab(30) + "-180|+180")
-        print(tab(34) + "^")
-        print(tab(27) + "-90 < -+- > +90")
-        print(tab(34) + "!")
-        print(tab(34) + "0")
-        print(tab(21) + "<<<< DIRECTION OF ORBIT <<<<\n")
-        print(tab(20) + "------ SURFACE OF MOON ------ \n")
-        print("ALL ANGLES BETWEEN -180 AND +180 DEGREES ARE ACCEPTED.")
-        input("<press enter>")
-        print("1 FUEL UNIT = 1 SEC. AT MAX THRUST")
-        print("ANY DISCREPANCIES ARE ACCOUNTED FOR IN THE USE OF FUEL")
-        print("FOR AN ATTITUDE CHANGE.")
-        print("AVAILABLE ENGINE POWER: 0 (ZERO) AND ANY VALUE BETWEEN")
-        print("10 AND 100 PERCENT.\n")
-        print("NEGATIVE THRUST OR TIME IS PROHIBITED.\n")
+        if q[0] != 'y':
+            print("\n  YOU ARE ON A LUNAR LANDING MISSION.  AS THE PILOT OF")
+            print("THE LUNAR EXCURSION MODULE, YOU WILL BE EXPECTED TO")
+            print("GIVE CERTAIN COMMANDS TO THE MODULE NAVIGATION SYSTEM.")
+            print("THE ON-BOARD COMPUTER WILL GIVE A RUNNING ACCOUNT")
+            print("OF INFORMATION NEEDED TO NAVIGATE THE SHIP.\n\n")  # line 8
+            print("THE ATTITUDE ANGLE CALLED FOR IS DESCRIBED AS FOLLOWS.")
+            print("+ OR -180 DEGREES IS DIRECTLY AWAY FROM THE MOON")
+            print("-90 DEGREES IS ON A TANGENT IN THE DIRECTION OF ORBIT")
+            print("+90 DEGREES IS ON A TANGENT FROM THE DIRECTION OF ORBIT")
+            print("0 (ZERO) DEGREES IS DIRECTLY TOWARD THE MOON\n")  # line 16
+            print(tab(30) + "-180|+180")
+            print(tab(34) + "^")
+            print(tab(27) + "-90 < -+- > +90")
+            print(tab(34) + "!")
+            print(tab(34) + "0")
+            print(tab(21) + "<<<< DIRECTION OF ORBIT <<<<\n")
+            print(tab(20) + "------ SURFACE OF MOON ------ \n")
+            print("ALL ANGLES BETWEEN -180 AND +180 DEGREES ARE ACCEPTED.")
+            input("<press enter>")
+            print("1 FUEL UNIT = 1 SEC. AT MAX THRUST")
+            print("ANY DISCREPANCIES ARE ACCOUNTED FOR IN THE USE OF FUEL")
+            print("FOR AN ATTITUDE CHANGE.")
+            print("AVAILABLE ENGINE POWER: 0 (ZERO) AND ANY VALUE BETWEEN")
+            print("10 AND 100 PERCENT.\n")
+            print("NEGATIVE THRUST OR TIME IS PROHIBITED.\n")
 
-# 485 PRINT
-# 490 PRINT "INPUT: TIME INTERVAL IN SECONDS ------ (T)"
-# 495 PRINT "       PERCENTAGE OF THRUST ---------- (P)"
-# 500 PRINT "       ATTITUDE ANGLE IN DEGREES ----- (A)"
-# 505 PRINT
-# 510 IF Q$="YES" THEN 535
-# 515 PRINT "FOR EXAMPLE:"
-# 520 PRINT "T,P,A? 10,65,-60"
-# 525 PRINT "TO ABORT THE MISSION AT ANY TIME, ENTER 0,0,0"
-# 530 PRINT
-# 535 PRINT "OUTPUT: TOTAL TIME IN ELAPSED SECONDS"
-# 540 PRINT "        HEIGHT IN ";M$
-# 545 PRINT "        DISTANCE FROM LANDING SITE IN ";M$
-# 550 PRINT "        VERTICAL VELOCITY IN ";M$;"/SECOND"
-# 555 PRINT "        HORIZONTAL VELOCITY IN ";M$;"/SECOND"
-# 560 PRINT "        FUEL UNITS REMAINING"
-# 565 PRINT
+        print("\nINPUT: TIME INTERVAL IN SECONDS ------ (T)")
+        print("       PERCENTAGE OF THRUST ---------- (P)")
+        print("       ATTITUDE ANGLE IN DEGREES ----- (A)\n")
+
+        if q[0] != 'y':
+            print("FOR EXAMPLE:")
+            print("T,P,A? 10,65,-60")
+            print("TO ABORT THE MISSION AT ANY TIME, ENTER 0,0,0\n")
+
+        print("OUTPUT: TOTAL TIME IN ELAPSED SECONDS")
+        print("        HEIGHT IN " + self.M_STR)
+        print("        DISTANCE FROM LANDING SITE IN " + self.M_STR)
+        print("        VERTICAL VELOCITY IN " + self.M_STR + "/SECOND")
+        print("        HORIZONTAL VELOCITY IN " + self.M_STR + "/SECOND")
+        print("        FUEL UNITS REMAINING\n")
 
     def run(self):
         intro()
@@ -112,13 +112,18 @@ class Rockt2:
             self.M_STR = "FEET"
             self.G3 = 0.592
             self.N_STR = "N.MILES"
-            self.G5=1000
+            self.G5 = 1000
         else:
             self.Z = 1852.8
-            self.M_STR="METERS"
+            self.M_STR = "METERS"
             self.G3 = 3.6
-            self.N_STR=" KILOMETERS"
+            self.N_STR = " KILOMETERS"
             self.G5 = 1000
+        self.instructions(q)
+
+        # for i in range(self.n - 1):
+        #    if self.M1 != 0:
+
 
     def get_measurement_option(self, q):
         i = -1
@@ -138,7 +143,6 @@ class Rockt2:
             except:
                 pass
         return i
-
 
 
 if __name__ == '__main__':
